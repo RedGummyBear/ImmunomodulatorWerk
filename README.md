@@ -36,6 +36,7 @@ LargeScaleMYCLibraryScreening — large-scale virtual screening of MYC inhibitor
 
 cMycInhibitorDossier45xV5 — full pharmacological dossier comparing DAN-MYC-4.5 vs DAN-MYC-6H-V5; evaluates c-MYC inhibition, ADMET proxies, normal-MYC selectivity, and immune-escape probability. Lead candidate: DAN-MYC-6H-V5 (predicted IC50: 0.2 nM, GRANT GREEN verdict)
 
+
 KEY OUTPUTS:
 
 Lead candidate: DAN-MYC-6H-V5 — predicted IC50 0.2 nM, no in-silico liabilities flagged, cleared for in-vivo proof of concept

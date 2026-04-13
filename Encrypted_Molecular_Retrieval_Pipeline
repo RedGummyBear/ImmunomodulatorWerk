@@ -1,0 +1,48 @@
+# ================= 0.  [PROJECT_NAME_REDACTED] =================
+# 0a.  fetch & install [CLOUD_STORAGE_CMD] (direct deb)
+!wget -q [URL_REDACTED]
+!apt -qq install -y [PACKAGE_LIST_REDACTED]
+!dpkg -i [DEB_NAME_REDACTED] || apt -qq -f install -y
+
+# 0b.  python tools
+!pip -q install [PACKAGES_REDACTED]
+
+# 0c.  credentials
+import os, getpass, hashlib, json
+os.environ['[ENV_EMAIL_REDACTED]']    = input("[PROMPT_REDACTED]")
+os.environ['[ENV_PASS_REDACTED]'] = getpass.getpass("[PROMPT_REDACTED]")
+
+# 0d.  kill any hanging daemon + one-shot login
+!pkill -f [DAEMON_NAME_REDACTED] 2>/dev/null; sleep 2
+![CMD_REDACTED] --auth-code=none "$[ENV_EMAIL_REDACTED]" "$[ENV_PASS_REDACTED]" --keep-session=0 </dev/null
+
+# 0e.  create remote folder
+![CMD_REDACTED] -p [FOLDER_NAME_REDACTED]
+
+# 0f.  local encrypted cache
+CACHE = '[PATH_REDACTED]'
+os.makedirs(CACHE, exist_ok=True)
+os.chdir(CACHE)
+
+
+# 0g.  molecule identity – store only SMILES
+SMILES = '[SMILES_STRING_REMOVED]'
+print('SHA-256 of SMILES:', hashlib.sha256(SMILES.encode()).hexdigest())
+
+//CELL OUTPUT://
+
+libcrypto++8 is already the newest version ([VERSION_REDACTED]).
+libmediainfo0v5 is already the newest version ([VERSION_REDACTED]).
+libzen0v5 is already the newest version ([VERSION_REDACTED]).
+0 upgraded, 0 newly installed, 0 to remove and 44 not upgraded.
+(Reading database ... [NUM_REDACTED] files and directories currently installed.)
+Preparing to unpack megacmd-xUbuntu_22.04_amd64.deb ...
+Unpacking megacmd ([VERSION_REDACTED]) over ([VERSION_REDACTED]) ...
+Setting up megacmd ([VERSION_REDACTED]) ...
+sysctl: setting key "fs.inotify.max_user_watches", ignoring: Read-only file system
+Mega e-mail: [EMAIL_REDACTED]
+Mega password: ··········
+^C
+^C
+^C
+SHA-256 of SMILES: [d18d12dc43001fb0587c322add3bc828ccef5ff1b9e94c7dfc3ec9f5706fcd1a]
